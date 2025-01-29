@@ -26,6 +26,21 @@ function App() {
   // ~ should NOT be empty, on submission
   // ~ IF EMPTY, then DISPLAY "ERROR"
   // ~
+
+  const notEmptyFn = (elem, index) => {
+    return (elem.value && elem.value !== "")
+  };
+
+  const simplifiedNotEmptyFn = (elem, index) => (elem.value && elem.value !== "");
+
+  /**
+   * 📌 Breakdown of the !! Operator
+	•	First ! (logical NOT): Converts a value into a boolean and negates it. If the value is truthy (i.e., something like a non-empty string, a number other than zero, or an object), it becomes false. If the value is falsy (like null, undefined, 0, false, ""), it becomes true.
+	•	Second ! (logical NOT): Negates the result of the first !, turning it back into its opposite boolean value.
+   */
+
+  const eloquentNotEmptyFn = (elem, index) => !!elem.value;
+
   const handleSubmit = (e) => {
     // this prevents the automatic reloading-effect of a PC HTML form reset
     e.preventDefault();
@@ -36,7 +51,17 @@ function App() {
     const formState = e.target;
     const [...miiState] = formState;
     console.log(miiState);
-    const
+
+    // Iterate over each elem in miiState[].array
+    // using .map() or .find()
+    // if each elem - has .VALUE property
+    // then check if it's FALSY
+
+    if (!miiState.some(eloquentNotEmptyFn(elem, index))) {
+      throw new Error("All fields are required.");
+    };
+    // then THROW ERROR MESSAGE
+    // ==>  "All fields are required." T
 
     // P: check if empty
 
