@@ -18,6 +18,8 @@ function App() {
 
   // ES6-JS arrow-expression
   // arbitrary input-e expecting an 'event'
+
+  // REQ3: Form validation
   const handleSubmit = (e) => {
     // this prevents the automatic reloading-effect of a PC HTML form reset
     e.preventDefault();
@@ -37,6 +39,7 @@ function App() {
       <div className="App">
 
         {/* header-tag says Contact Form */}
+        {/* REQ1: Form structure */}
         <h1>Contact Form</h1>
         {/* form-tag */}
         <form onSubmit={handleSubmit}>
@@ -60,6 +63,8 @@ function App() {
             placeholder="Message"
             data-testid="message-input"
           />
+
+          {/* REQ2: Form submission */}
           <button type="submit" data-testid="submit-button">
             Submit
           </button>
@@ -69,8 +74,11 @@ function App() {
             {error}
           </p>
         )}
+
         {submittedData && (
           <div data-testid="submitted-data" className="submitted-data">
+
+          {/* REQ4: Display submitted data */}
             <h2>Submitted Information</h2>
             <p>
               <strong>Name:</strong> {submittedData.name}
