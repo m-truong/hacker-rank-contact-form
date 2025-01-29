@@ -13,7 +13,10 @@ function App() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+
+  // NOTE: this seems to be the catch-all data used from all the input-tags
   const [submittedData, setSubmittedData] = useState(null);
+
   const [error, setError] = useState("");
 
   // ES6-JS arrow-expression
@@ -28,9 +31,28 @@ function App() {
     e.preventDefault();
     // TODO: Add logic to validate inputs and display submitted data
     // HINT: You can use the setError function
-    console.log(e)
+    console.log(e);
+    console.log(e.target);
+    const formState = e.target;
+    const [...miiState] = formState;
+    console.log(miiState);
+    const
+
+    // P: check if empty
+
+    // if ( name && email && message ) {
+      // throw
+    // }
+    // if-true, then throw error
+
+
+    // If-statement-comes-first ~ check validation
+
+
     // HINT: You can use the setSubmittedData function as below
     // setSubmittedData({ name, email, message });
+
+    // TODO: then reset all input fields
   };
 
   // returns JSX-template (which is dynamic JS with HTML tags)
