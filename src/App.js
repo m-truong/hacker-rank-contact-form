@@ -28,7 +28,7 @@ function App() {
     e.preventDefault();
     // TODO: Add logic to validate inputs and display submitted data
     // HINT: You can use the setError function
-
+    console.log(e)
     // HINT: You can use the setSubmittedData function as below
     // setSubmittedData({ name, email, message });
   };
@@ -46,13 +46,17 @@ function App() {
         <h1>Contact Form</h1>
         {/* form-tag */}
         <form onSubmit={handleSubmit}>
+
           <input
             type="text"
             value={name}
+            // onChange: This is a built-in HTML event that fires whenever the value of an input field changes. It works in plain HTML as well as in React.
             onChange={(e) => setName(e.target.value)}
             placeholder="Name"
+            // custom data attribute (part of the data-* attributes in HTML). These attributes are often used for testing, debugging, or tracking elements in an application.
             data-testid="name-input"
           />
+
           <input
             type="email"
             value={email}
@@ -60,6 +64,7 @@ function App() {
             placeholder="Email"
             data-testid="email-input"
           />
+
           <textarea
             value={message}
             onChange={(e) => setMessage(e.target.value)}
@@ -72,7 +77,10 @@ function App() {
           <button type="submit" data-testid="submit-button">
             Submit
           </button>
+
         </form>
+
+        {/* ERROR-HANDLING-BLOCK */}
         {error && (
           <p data-testid="error-message" className="error">
             {error}
