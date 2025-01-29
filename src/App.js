@@ -20,6 +20,9 @@ function App() {
   // arbitrary input-e expecting an 'event'
 
   // REQ3: Form validation
+  // ~ should NOT be empty, on submission
+  // ~ IF EMPTY, then DISPLAY "ERROR"
+  // ~
   const handleSubmit = (e) => {
     // this prevents the automatic reloading-effect of a PC HTML form reset
     e.preventDefault();
@@ -33,7 +36,7 @@ function App() {
   // returns JSX-template (which is dynamic JS with HTML tags)
   return (
     <>
-      <h8k-navbar header="Contact Form"></h8k-navbar>
+      <h8k-navbar header="Contact Form"/>
 
       {/* this is .App className selector */}
       <div className="App">
@@ -65,6 +68,7 @@ function App() {
           />
 
           {/* REQ2: Form submission */}
+          {/* TODO: AFTER submission, THEN WIPE-OUT internal-state */}
           <button type="submit" data-testid="submit-button">
             Submit
           </button>
@@ -79,6 +83,7 @@ function App() {
           <div data-testid="submitted-data" className="submitted-data">
 
           {/* REQ4: Display submitted data */}
+          {/* TODO: if VALIDATED, then DISPLAY in HTML */}
             <h2>Submitted Information</h2>
             <p>
               <strong>Name:</strong> {submittedData.name}
