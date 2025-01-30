@@ -63,7 +63,10 @@ function App() {
     if (!miiState.some(eloquentNotEmptyFn)) {
       // const error = new Error("All fields are required.")
       setError("All fields are required.");
-    };
+      // return;
+    } else {
+      setError("");
+    }
     // then THROW ERROR MESSAGE
     // ==>  "All fields are required." T
 
@@ -79,7 +82,12 @@ function App() {
 
 
     // HINT: You can use the setSubmittedData function as below
-    // setSubmittedData({ name, email, message });
+    if (name && email && message ) {
+      setSubmittedData({ name, email, message });
+      setName("");
+      setEmail("");
+      setMessage("");
+    }
 
     // TODO: then reset all input fields
   };
