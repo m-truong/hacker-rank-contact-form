@@ -31,7 +31,7 @@ function App() {
     return (elem.value && elem.value !== "")
   };
 
-  const simplifiedNotEmptyFn = (elem, index) => (elem.value && elem.value !== "");
+  const simplifiedNotEmptyFn = (elem, index) => (elem.hasOwnProperty('value') && elem.value !== "");
 
   /**
    * 📌 Breakdown of the !! Operator
@@ -39,7 +39,8 @@ function App() {
 	•	Second ! (logical NOT): Negates the result of the first !, turning it back into its opposite boolean value.
    */
 
-  const eloquentNotEmptyFn = (elem, index) => !!elem.value;
+  // check for null or undefined
+  const eloquentNotEmptyFn = (elem, index) => elem && 'value' in elem && elem.value.trim() !== '';
 
   const handleSubmit = (e) => {
     // this prevents the automatic reloading-effect of a PC HTML form reset
@@ -57,8 +58,11 @@ function App() {
     // if each elem - has .VALUE property
     // then check if it's FALSY
 
-    if (!miiState.some(eloquentNotEmptyFn(elem, index))) {
-      throw new Error("All fields are required.");
+    // IF SOME ARE EMPTY STRINGS ""
+    // all higher-order functions EXPECT a FUNCTION REFERENCE, and NOT immediately invoking it.
+    if (!miiState.some(eloquentNotEmptyFn)) {
+      // const error = new Error("All fields are required.")
+      setError("All fields are required.");
     };
     // then THROW ERROR MESSAGE
     // ==>  "All fields are required." T
